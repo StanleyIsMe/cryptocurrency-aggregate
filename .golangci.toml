@@ -1,0 +1,184 @@
+## START SECTION TO BE CONFIGURED WITH YOUR OWN REPO PATH
+
+[linters-settings.gci]
+sections=[
+    "standard",
+    "default",
+    "prefix(cryptocurrencyaggregate)",
+]
+
+[linters-settings.gofumpt]
+extra-rules = true
+module-path = "cryptocurrencyaggregate"
+
+[run]
+timeout = "3m"
+
+## END SECTION TO BE CONFIGURED WITH YOUR OWN REPO PATH
+
+[service]
+golangci-lint-version = "1.50"
+
+[linters]
+disable-all = true
+
+enable = [
+    "asasalint",
+    "asciicheck",
+    "bidichk",
+    "bodyclose",
+    "containedctx",
+    "contextcheck",
+    "cyclop",
+    # "deadcode", deprecated
+    "decorder",
+    "depguard",
+    "dogsled",
+    "dupl",
+    "dupword",
+    "durationcheck",
+    "errcheck",
+    "errchkjson",
+    "errname",
+    "errorlint",
+    "execinquery",
+    "exhaustive",
+    # "exhaustivestruct", deprecated
+    # "exhaustruct", quite difficult to enable for partial struct init
+    "exportloopref",
+    "forbidigo",
+    "forcetypeassert",
+    # "funlen", the complexity is covering most of issues
+    "gci",
+    "gochecknoglobals",
+    "gochecknoinits",
+    "gocognit",
+    "goconst",
+    "gocritic",
+    "gocyclo",
+    # "godot", the dot is not always easy to add (multiline for ex)
+    "godox",
+    "goerr113",
+    "gofmt",
+    "gofumpt",
+    "goheader",
+    "goimports",
+    # "golint", deprecated
+    "gomnd",
+    "gomoddirectives",
+    "gomodguard",
+    "goprintffuncname",
+    "gosec",
+    "gosimple",
+    "govet",
+    "grouper",
+    # "ifshort", deprecated
+    "importas",
+    "ineffassign",
+    "interfacebloat",
+    # "interfacer" [deprecated]: Linter that suggests narrower interface types [fast: false, auto-fix: false]
+    "ireturn",
+    "lll",
+    "loggercheck",
+    "maintidx",
+    "makezero",
+    # "maligned", deprecated
+    "misspell",
+    "nakedret",
+    "nestif",
+    "nilerr",
+    "nilnil",
+    "nlreturn",
+    "noctx",
+    "nolintlint",
+    "nonamedreturns",
+    # "nosnakecase", deprecated
+    "nosprintfhostport",
+    "paralleltest",
+    "prealloc",
+    "predeclared",
+    "promlinter",
+    "reassign",
+    "revive",
+    "rowserrcheck",
+    # "scopelint", deprecated
+    "sqlclosecheck",
+    "staticcheck",
+    # "structcheck", deprecated
+    "stylecheck",
+    # "tagliatelle",
+    "tenv",
+    "testableexamples",
+    # "testpackage",
+    "thelper",
+    "tparallel",
+    "typecheck",
+    "unconvert",
+    "unparam",
+    "unused",
+    "usestdlibvars",
+    # "varcheck", deprecated
+    "varnamelen",
+    "wastedassign",
+    "whitespace",
+    "wrapcheck",
+    "wsl",
+]
+
+[linters-settings.errcheck]
+check-type-assertions = true
+check-blank = true
+
+[linters-settings.govet]
+check-shadowing = true
+enable-all = true
+disable = [
+    "fieldalignment"
+]
+
+[linters-settings.revive]
+min-confidence = 0.0
+
+[linters-settings.prealloc]
+simple = false
+range-loops = true
+for-loops = true
+
+[linters-settings.gocritic]
+enabled-tags = [
+    "diagnostic",
+    "experimental",
+    "opinionated",
+    "performance",
+    "style",
+]
+disabled-checks = ["whyNoLint"]
+
+[linters-settings.errorlint]
+errorf = true
+
+[linters-settings.nolintlint]
+require-explanation = true
+require-specific = true
+
+[[issues.exclude-rules]]
+path = '(.+)_test\.go'
+linters = [
+    "funlen",
+    "goconst",
+    "interfacer",
+    "dupl",
+    "lll",
+    "goerr113",
+    "varnamelen",
+    "errcheck",
+    "gocritic",
+    "cyclop",
+    "wrapcheck",
+    "gocognit",
+    "contextcheck",
+]
+
+[[issues.exclude-rules]]
+linters = ["lll"]
+source = "^//go:generate "
